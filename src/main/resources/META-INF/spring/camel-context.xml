@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+  <!-- routes are defined in separate files to avoid this one getting unwieldy -->
+  <import resource="classpath:routes/*.xml"/>
+
+  <context:annotation-config/>
+  <context:component-scan base-package="com.hoopladigital"/>
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring" id="camelContext">
+
+    <routeContextRef ref="xmlInputRouteContext"/>
+    <routeContextRef ref="jsonInputRouteContext"/>
+
+    <dataFormats>
+      <json id="json" library="Jackson" allowJmsType="true" />
+    </dataFormats>
+
+  </camelContext>
+
+</beans>
