@@ -25,6 +25,11 @@
                     <unmarshal><custom ref="json"/></unmarshal>
                     <to uri="bean:jsonProcessor" />
                 </when>
+                <when>
+                    <jsonpath>$.[?($.reportType=='ANOTHER_TYPE')]</jsonpath>
+                    <unmarshal><custom ref="json"/></unmarshal>
+                    <to uri="bean:anotherProcessor"/>
+                </when>
             </choice>
             
 

@@ -10,14 +10,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ObjectMapperConfig {
 
-    @Bean
-    public ObjectMapper jsonReportObjectMapper() {
+	@Bean
+	public ObjectMapper jsonReportObjectMapper() {
 
-        final ObjectMapper objectMapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(ReportRequest.class, new ReportRequestDeserializer(ReportRequest.class));
-        objectMapper.registerModule(module);
+		final SimpleModule module = new SimpleModule();
+		module.addDeserializer(ReportRequest.class, new ReportRequestDeserializer(ReportRequest.class));
 
-        return objectMapper;
-    }
+		final ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.registerModule(module);
+
+		return objectMapper;
+
+	}
+
 }
