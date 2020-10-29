@@ -1,0 +1,8 @@
+{
+    "reportType": "ORDER_LINE_DOWNLOAD",
+    "payload": {
+        "name": "foo_bar",
+        "id": "blah",
+        "maybeAnArray": [1, 2, 3]
+    }
+}

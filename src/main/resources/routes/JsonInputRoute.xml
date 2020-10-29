@@ -13,8 +13,21 @@
         <route id="logJsonInput">
             <from uri="file:src/data?noop=true&amp;include=.*\.json" />
             <log message="json file received ${body}"/>
-            <unmarshal><custom ref="json"/></unmarshal>
-            <to uri="bean:jsonProcessor" />
+
+            <!-- this header is needed in order for Jackson to know what type to use when deserializing the message -->
+            <setHeader headerName="JMSType">
+                <constant>com.hoopladigital.bean.ReportRequest</constant>
+            </setHeader>
+
+            <choice>
+                <when>
+                    <jsonpath>$.[?($.reportType=='ORDER_LINE_DOWNLOAD')]</jsonpath>
+                    <unmarshal><custom ref="json"/></unmarshal>
+                    <to uri="bean:jsonProcessor" />
+                </when>
+            </choice>
+            
+
         </route>
 
     </routeContext>

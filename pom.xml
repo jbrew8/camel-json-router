@@ -28,6 +28,7 @@
     </dependencies>
   </dependencyManagement>
 
+  <!-- camel -->
   <dependencies>
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -42,6 +43,21 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jackson</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jsonpath</artifactId>
+    </dependency>
+
+    <!-- lombox  -->
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.16</version>
+      <scope>provided</scope>
+    </dependency>
+
 
     <!-- logging -->
     <dependency>
