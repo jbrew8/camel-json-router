@@ -1,0 +1,7 @@
+{
+	"reportType": "ANOTHER_TYPE",
+	"payload": {
+		"someLabel": "snapped the frame",
+		"id": 123
+	}
+}
