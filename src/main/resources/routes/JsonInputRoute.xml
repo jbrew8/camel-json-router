@@ -18,20 +18,18 @@
             <setHeader headerName="JMSType">
                 <constant>com.hoopladigital.bean.ReportRequest</constant>
             </setHeader>
+            <unmarshal><custom ref="json"/></unmarshal>
 
             <choice>
                 <when>
-                    <jsonpath>$.[?($.reportType=='ORDER_LINE_DOWNLOAD')]</jsonpath>
-                    <unmarshal><custom ref="json"/></unmarshal>
+                    <simple>${body.reportType} == 'ORDER_LINE_DOWNLOAD'</simple>
                     <to uri="bean:jsonProcessor" />
                 </when>
                 <when>
-                    <jsonpath>$.[?($.reportType=='ANOTHER_TYPE')]</jsonpath>
-                    <unmarshal><custom ref="json"/></unmarshal>
+                    <simple>${body.reportType} == 'ANOTHER_TYPE'</simple>
                     <to uri="bean:anotherProcessor"/>
                 </when>
             </choice>
-            
 
         </route>
 
